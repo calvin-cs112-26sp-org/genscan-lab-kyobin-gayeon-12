@@ -109,22 +109,22 @@ void printResults(const string& subSeq, long numSubSeqs,
 
 // --------- main function ---------------------
 int main(int argc, char** argv) { 
-  string fileName;
-  string subSeq;
-  string dna;
+    string fileName;
+    string subSeq;
+    string dna;
 
-  double startTotalTime = omp_get_wtime();
-  processCommandLineArgs(argc, argv, fileName, subSeq);
+    double startTotalTime = omp_get_wtime();
+    processCommandLineArgs(argc, argv, fileName, subSeq);
 
-  double startReadTime = omp_get_wtime();
-  readFile(fileName, dna);
-  double readTime = omp_get_wtime() - startReadTime;
+    double startReadTime = omp_get_wtime();
+    readFile(fileName, dna);
+    double readTime = omp_get_wtime() - startReadTime;
 
-  double startScanTime = omp_get_wtime();
-  long count = scan(dna, subSeq);
-  double scanTime = omp_get_wtime() - startScanTime;
+    double startScanTime = omp_get_wtime();
+    long count = scan(dna, subSeq);
+    double scanTime = omp_get_wtime() - startScanTime;
+    double totalTime = omp_get_wtime() - startTotalTime;
 
-  double totalTime = omp_get_wtime() - startTotalTime;
-
-  printResults(subSeq, count, readTime, scanTime, totalTime);
+    printResults(subSeq, count, readTime, scanTime, totalTime);
 }
+
